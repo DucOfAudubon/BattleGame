@@ -10,6 +10,7 @@ public class Calculator extends Application {
     @Override
     public void start(Stage primaryStage) {
         Pane pane = new CalculatorPane();
+        pane.setStyle("-fx-background-color: #121212");
         Scene scene = new Scene(pane, 180, 200);
         primaryStage.setTitle("JavaFX Calculator"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage

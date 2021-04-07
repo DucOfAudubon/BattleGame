@@ -14,6 +14,7 @@ public class CalculatorPane extends VBox{
 
     private void init() {
         TextField input = new TextField(); //This'll be where the input AND output go. Efficiency
+        input.setStyle("-fx-background-color: #B3B3B3; -fx-text-fill: #ffffff");
         StringProperty inProperty = input.textProperty();
         //To be honest, I'm not thrilled with the setup here, but it works and it's not hideous
         //Also, using rows means that when I add them all together later, I only have to call the rows, not everything

@@ -22,6 +22,7 @@ public class InputButton extends Button{
         this.value = value;
         this.inProperty = inProperty;
         setMinWidth(width);
+        setStyle("-fx-background-color: #404040; -fx-text-fill: #ffffff; -fx-border-color: #282828");
         setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

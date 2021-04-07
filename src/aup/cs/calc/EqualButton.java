@@ -15,6 +15,7 @@ public class EqualButton extends InputButton {
      */
     public EqualButton(StringProperty inProperty, int width) {
         super("=", inProperty, width);
+        setStyle("-fx-background-color: B3B3B3");
         setDefaultButton(true);
     }
 
