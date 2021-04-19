@@ -9,14 +9,17 @@ public class ScoresPane extends HBox {
     private int score2 = 0;
     private Text textSc1;
     private Text textSc2;
+    private Text gap1 = new Text("\t\t");
+    private Text gap2 = new Text("\t\t");
+    private CardsPane cardsPane;
 
     public ScoresPane(){
         super();
-        this.textSc1 = new Text("Player 1: " + getScore1());
-        this.textSc2 = new Text("Player 2: " + getScore2());
+        textSc1 = new Text("Player 1: " + getScore1());
+        textSc2 = new Text("Player 2: " + getScore2());
         Button reset = new Button("Reset");
-        reset.setOnAction(e -> reset());
-        getChildren().addAll(textSc1, reset, textSc2);
+        reset.setOnAction(e -> resetInternal());
+        getChildren().addAll(textSc1, gap1, reset, gap2, textSc2);
     }
 
     public void addPoint(int winner){
@@ -40,6 +43,10 @@ public class ScoresPane extends HBox {
         setScore1(0);
         setScore2(0);
         setText();
+    }
+
+    private void resetInternal(){
+        cardsPane.reset();
     }
 
     public int getScore1() {
@@ -68,5 +75,9 @@ public class ScoresPane extends HBox {
         else{
             return 0;
         }
+    }
+
+    public void setCardsPane(CardsPane cardsPane){
+        this.cardsPane = cardsPane;
     }
 }

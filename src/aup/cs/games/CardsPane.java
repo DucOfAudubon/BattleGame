@@ -49,18 +49,14 @@ public class CardsPane extends VBox {
         else if(card1.getValue() < card2.getValue()){
             scoresPane.addPoint(2);
         }
-        System.out.println("Dealt out another 2 cards. Deck is size " + deck.cards.size());
     }
 
     private void endGame() {
-        System.out.println("ran endgame");
         winner = scoresPane.getWinner();
         if(winner == 0){
-            System.out.println("It was a tie");
             display.setText("Amazing! It's a tie! Please click on the screen to play again.");
         }
         else{
-            System.out.println("It wasn't a tie");
             display.setText("Player " + winner + " has won! Please click on the screen to play again.");
         }
         display.setOpacity(100);
@@ -69,11 +65,12 @@ public class CardsPane extends VBox {
         setOnMouseClicked(event -> reset());
     }
 
-    private void reset() {
+    public void reset() {
         deck = new Deck();
         mainDeck.setOpacity(100);
         display.setText("");
         scoresPane.reset();
+        playedCards.setOpacity(0);
         mainDeck.setOnMouseClicked(event -> play());
         setOnMouseClicked(event -> {});
     }
