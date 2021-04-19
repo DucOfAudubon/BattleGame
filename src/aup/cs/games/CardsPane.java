@@ -79,6 +79,8 @@ public class CardsPane extends VBox {
         display.setOpacity(100);
         playedCards.setOpacity(0);
         setOnMouseClicked(event -> reset());
+        scoresPane.setOnMouseClicked(event -> reset());
+
     }
 
     /**
