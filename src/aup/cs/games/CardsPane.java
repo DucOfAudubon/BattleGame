@@ -21,6 +21,7 @@ public class CardsPane extends VBox {
     private HBox playedCards = new HBox(deck1, deck2);
     private ImageView mainDeck = new ImageView(deckPile);
     private Text display = new Text("");
+    int winner;
 
     public CardsPane(ScoresPane scoresPane) {
         super();
@@ -31,14 +32,16 @@ public class CardsPane extends VBox {
     }
 
     private void play() {
-        if(deck.cards.size() == 0) {
-            endGame();
-            return;
-        }
         Card card1 = deck.draw();
         deck1.setImage(card1.getCardFront());
         Card card2 = deck.draw();
         deck2.setImage(card2.getCardFront());
+        if(deck.cards.size() == 0) {
+            mainDeck.setOpacity(0);
+            setOnMouseClicked(event -> endGame());
+            mainDeck.setOnMouseClicked(event -> {});
+            return;
+        }
         playedCards.setOpacity(100);
         if(card1.getValue() > card2.getValue()){
             scoresPane.addPoint(1);
@@ -46,25 +49,33 @@ public class CardsPane extends VBox {
         else if(card1.getValue() < card2.getValue()){
             scoresPane.addPoint(2);
         }
+        System.out.println("Dealt out another 2 cards. Deck is size " + deck.cards.size());
     }
 
     private void endGame() {
-        int winner = scoresPane.getWinner();
+        System.out.println("ran endgame");
+        winner = scoresPane.getWinner();
         if(winner == 0){
+            System.out.println("It was a tie");
             display.setText("Amazing! It's a tie! Please click on the screen to play again.");
         }
         else{
-            display.setText("Player " + winner + "has won! Please click on the screen to play again.");
+            System.out.println("It wasn't a tie");
+            display.setText("Player " + winner + " has won! Please click on the screen to play again.");
         }
+        display.setOpacity(100);
         playedCards.setOpacity(0);
         mainDeck.setOpacity(0);
         setOnMouseClicked(event -> reset());
     }
 
     private void reset() {
-        this.deck = new Deck();
-        mainDeck.setOpacity(1);
+        deck = new Deck();
+        mainDeck.setOpacity(100);
         display.setText("");
+        scoresPane.reset();
+        mainDeck.setOnMouseClicked(event -> play());
+        setOnMouseClicked(event -> {});
     }
 
     private class Deck {

@@ -11,7 +11,7 @@ public class BattleGame extends Application {
     public void start(Stage primaryStage) {
         Pane gamePane = new GamePane();
         gamePane.setStyle("-fx-background-color: #277714");
-        Scene scene = new Scene(gamePane, 1000, 1000);
+        Scene scene = new Scene(gamePane, 1000, 600);
         primaryStage.setTitle("WARRRRR!");
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -14,10 +14,9 @@ public class ScoresPane extends HBox {
         super();
         this.textSc1 = new Text("Player 1: " + getScore1());
         this.textSc2 = new Text("Player 2: " + getScore2());
-        Text space = new Text("\t\t\t\t\t");
         Button reset = new Button("Reset");
         reset.setOnAction(e -> reset());
-        getChildren().addAll(textSc1, space, reset, space, textSc2);
+        getChildren().addAll(textSc1, reset, textSc2);
     }
 
     public void addPoint(int winner){
@@ -61,10 +60,10 @@ public class ScoresPane extends HBox {
 
     public int getWinner() {
         if(score1 > score2){
-            return score1;
+            return 1;
         }
         else if(score2 > score1){
-            return score2;
+            return 2;
         }
         else{
             return 0;
