@@ -10,7 +10,7 @@ public class BattleGame extends Application {
     @Override
     public void start(Stage primaryStage) {
         Pane gamePane = new GamePane();
-        gamePane.setStyle("-fx-background-color: #277714");
+        gamePane.setStyle("-fx-background-color: #277714"); //Like a card table
         Scene scene = new Scene(gamePane, 350, 250);
         primaryStage.setTitle("WARRRRR!");
         primaryStage.setScene(scene);
